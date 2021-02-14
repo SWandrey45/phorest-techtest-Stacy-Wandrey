@@ -13,5 +13,9 @@ a colour pallet - since this web app would be representing phorest, I decided to
 
 Why you made certain decisions over others, what did you take the time to learn? 
 
+## responsive for mobile 
+based on a bad expeirience so I wanted to implement this change 
+
+
 
 
