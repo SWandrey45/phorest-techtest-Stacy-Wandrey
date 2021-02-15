@@ -2,32 +2,55 @@
 <html lang="en">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phorest Client Search</title>
-    <link rel = "stylesheet" type = "text/css" href = "static/css/styles.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel = "stylesheet" type = "text/css" href = "static/css/styles.css"/>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <script src="static/JavaScript/JS.js"></script>
-
-
-
 </head>
-<body>
-    
-    <h1 style="color: white; background-color: rebeccapurple;">Phorest Client Search</h1>
-    <img src="static/phorest_logo.png">
-    <div class="dropdownmenu">
-        <select class="form-control" style="background-color: rebeccapurple; color: white;" id="dropdownmenu" >
+
+<body style="background-color: #7a4ca9; font-family: Montserrat,sans-serif;">
+    <img src="static/phorest-logo2.svg" class="center_img">
+    <h1 style="color: white;">Client Search</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg">
+  <div class="card">
+    <div class="card-body" style="font-family: sans-serif;">
+        <h4 class="card-title">Select what you're looking for</h4>
+        <select class="form-control" style="font-family: sans-serif;" id="dropdownmenu" >
             <option value="email">Email</option>
             <option value="phone">Phone Number</option>
             <option value="firstName">First Name</option>
             <option value="lastName">Last Name</option>
         </select>
-      </div>
+      
+      <h4 class="card-title">Enter the clients information</h4>
     <input type="text" id="input" class="form-control" placeholder="Enter Name or Phone Number" aria-label="Enter Name or Phone Number" aria-describedby="basic-addon2"/>
-    <button type="submit" id="submit-btn"  onClick="clientSearch()" style="background-color:rebeccapurple; color:white;" class="btn-lg">Search</button>
+    <button type="submit" id="submit-btn"  onClick="clientSearch()" style="background-color:#ef9812; color:white;" class="btn-lg">Search</button>
+</div>
+</div>
+    </div>
+</div>
+    </div>
 
+
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+<div class="card">
+<div class="card-body" id="clientCard" style="background-color: white; margin-top: 50px;">
+<h4 class="card-title">Customer Information</h4>
+<p class="card-text"></p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>
