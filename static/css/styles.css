@@ -14,24 +14,24 @@ h1 {
 option, input{
     font-family: sans-serif;
 }
+
  
 .card{
     background-color: white;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    border-radius: 5px;
 }
-.card-body{
+/* .card-body{
     margin-left: 50px;
     margin-top: 50px;
     margin-right: 50px;
     margin-bottom: 50px;
 }
+*/
+
 .card-title{
     margin-left: 50px;
-    margin-top: 50px;
     margin-right: 50px;
-    margin-bottom: 50px;
-}
+} 
 button{
     display: block;
     margin-left: 10px;
