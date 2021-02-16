@@ -14,10 +14,21 @@ My
 
 Why you made certain decisions over others, what did you take the time to learn? 
 
+## Automated tests
+## Testing JavaScript 
+In order to set up tests, I had to do some research on the best way to handle testing my particular tech stack. As it stands I did not use a backend to connect to the API, so the application is made with two ajax called within two JavaScript functions.  so I started looking for the best way to handle the testing of my functions. There are several well known testing frameworks that go along with testing JavaScript like Mocha, Chai, Jasmine and Ava. 
+## Nice UI
+I stole the colours directly from the Phorest website so that the web app I made would be cohesive and on-brand with Phorest's image. 
 ## responsive for mobile 
 based on a bad expeirience so I wanted to implement this change 
-
+## Clean code
+I mean just look at it! 
+## Deploy code / give instructions on how to set up environments
+You should see the app deployed here: 
 
 Sending user input (which can contain unknown characters), POST is more robust and secure than GET.
 
 
+
+## A place to grow and improve the lives of others 
+Thank you very much for the opportunity to inteview and create this tech test! I hope it shows you what I am capable of and my passion for software engineering. I am happy to answer any questions about 
