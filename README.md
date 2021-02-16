@@ -27,9 +27,10 @@ I mean just look at it!
 You should see the app deployed here: 
 
 
-##
+##Problems
 curl request was bogus. 
 Sending user input (which can contain unknown characters), POST is more robust and secure than GET.
+the dates needed to be put into a special format 
 
 ## A place to grow and improve the lives of others 
 Thank you very much for the opportunity to inteview and create this tech test! I hope it shows you what I am capable of and my passion for software engineering. I am happy to answer any questions about 
