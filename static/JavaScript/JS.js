@@ -2,13 +2,10 @@ function clientSearch(){
     let clientInfo = document.getElementById("input").value;
     let infoType = document.getElementById("dropdownmenu");
     let infoTypeChosen = infoType.options[infoType.selectedIndex].value; 
-    console.log(clientInfo);
-    console.log(infoTypeChosen)
 
-
-const username = 'global/cloud@apiexamples.com';
-const password = 'VMlRo/eh+Xd8M~l';
-const url = 'http://api-gateway-dev.phorest.com/third-party-api-server/api/business/eTC3QY5W3p_HmGHezKfxJw/client?' + infoTypeChosen + '=' + clientInfo;
+    const username = 'global/cloud@apiexamples.com';
+    const password = 'VMlRo/eh+Xd8M~l';
+    const url = 'http://api-gateway-dev.phorest.com/third-party-api-server/api/business/eTC3QY5W3p_HmGHezKfxJw/client?' + infoTypeChosen + '=' + clientInfo;
  
 $.ajax({ 
     url: url,
@@ -35,53 +32,65 @@ $.ajax({
     let ok = " ";
 
     for(let i = 0; i < clients.length; i++){
-        let clientID = clients[i].clientId
+        clientID = clients[i].clientId
+        clientName = clients[i].firstName + " " + clients[i].lastName;
 
-        if(clientInfo.toLowerCase() === clients[i].firstName.toLowerCase() || clientInfo.toLowerCase() === clients[i].lastName.toLowerCase() || clientInfo === clients[i].mobile || clientInfo === clients[i].email){
+        let IsEqualToClientInfo = (clientInfo.toLowerCase() === clients[i].firstName.toLowerCase() || clientInfo.toLowerCase() === clients[i].lastName.toLowerCase() || clientInfo === clients[i].mobile || clientInfo === clients[i].email);
+
+
+        if(IsEqualToClientInfo){
         ok += "<div class='col-md-6'> <div class='card' margin-top:'50px'> <div class='card-body'> <h4 class='card-header'>Client: "+ clients[i].firstName + " " + clients[i].lastName + "</h4><p class='card-text'>"    
-        ok += "<p> Mobile: " + clients[i].mobile + "</p>"; 
-        ok += "<p> Email: " + clients[i].email + "</p>";
+        ok += "<p><b> Mobile:</b> " + clients[i].mobile + "</p>"; 
+        ok += "<p> <b>Email:</b> " + clients[i].email + "</p>";
         ok += "<input type='text' id='voucherInput' class='form-control' placeholder='Enter Voucher Amount' aria-label='Enter Name or Phone Number' aria-describedby='basic-addon2'/>"
         ok += "<button class='btn-sm' onClick='generateVoucher()' style='background-color:#ef9812; color:white;'>Add Voucher</button>"
         ok +=" <p>"+ clients[i].clientId + "</p>"
-        ok += "<div style='color: white;'>   .  </div></p></div></div></div>"
+        ok += "</p></div></div></div>"
         console.log(clientID)
-         } 
-        else if(clientInfo.toLowerCase() !== clients[i].firstName.toLowerCase() || clientInfo.toLowerCase() !== clients[i].lastName.toLowerCase() || clientInfo !== clients[i].mobile || clientInfo !== clients[i].email || clientInfo === ""){
-            //  ok = " ";
-             ok += "Sorry, no results for that search, please try again! Search is case sensitive :) ";
-            console.log('no')
-        } else{
-            // ok = " "
-             ok += "Sorry, no results for that search, please try again! Search is case sensitive :) "
-             document.getElementById("clientCard").innerHTML = ok;
-        }
-
+         }if(!IsEqualToClientInfo){
+             ok = "<p>whoops</p>"
+         }
     }
     document.getElementById("clientCard").innerHTML = ok;
 
-})
+
+}).fail(function (error) {
+    var ok = "<h4 class='importantVouchRes'>Sorry, your voucher cannot be processed. Please try again!</h4>";
+    document.getElementById("clientCard").innerHTML = ok;
+  })
 };
 
 function generateVoucher(){
-const username = 'global/cloud@apiexamples.com';
-const password = 'VMlRo/eh+Xd8M~l';
+    voucher = " ";
 
-var balance = document.getElementById("voucherInput").value;
-var clientId = 'gRihraZFtImGmZDYBzi0';
+    const username = 'global/cloud@apiexamples.com';
+    const password = 'VMlRo/eh+Xd8M~l';
+
+    let balance = document.getElementById("voucherInput").value;
+    let clientId = clientID;
+    let date = new Date;
+
+    let todaysDate = date.toISOString();
+    let sixMonth = date.toISOString();
+
 
 
 var url = "https://api-gateway-dev.phorest.com/third-party-api-server/api/business/eTC3QY5W3p_HmGHezKfxJw/voucher";
-var data = '{ \"clientId\": \"' + clientId + '\", \"creatingBranchId\": \"SE-J0emUgQnya14mOGdQSw\", \"expiryDate\": \"'
-data += '2021-02-15T11:00:48.246Z' + '\", \"issueDate\": \"' + '2021-02-15T11:00:48.246Z' + '\", \"links\": [ { \"href\": \"string\", \"rel\": \"string\", \"templated\": true } ], \"originalBalance\":' + balance + '}';
+var data = '{ \"clientId\": \"'+clientId+'\", \"creatingBranchId\": \"SE-J0emUgQnya14mOGdQSw\", \"expiryDate\": \"'+ sixMonth +'\", \"issueDate\": \"'+ todaysDate +'\", \"originalBalance\": '+ balance +'}';
+
+// curl -X POST "https://api-gateway-dev.phorest.com/third-party-api-server/api/business/eTC3QY5W3p_HmGHezKfxJw/voucher" -H "accept: */*" -H "authorization: Basic Z2xvYmFsL2Nsb3VkQGFwaWV4YW1wbGVzLmNvbTpWTWxSby9laCtYZDhNfmw=" -H "Content-Type: application/json" -d "{ \"clientId\": \"WwEaIb0m4bhJphVtm2VgIw\", \"creatingBranchId\": \"SE-J0emUgQnya14mOGdQSw\", \"expiryDate\": \"2021-02-16T18:20:05.126Z\", \"issueDate\": \"2021-02-16T18:20:05.126Z\", \"originalBalance\": 123.12, \"serialNumber\": 122343412356}"
 
 $.ajax({ 
     url: url,
     async: true,
-    type:'Post',
+    type:'POST',
     dataType: 'json',
     data: data,
     contentType: 'application/json',
+    headers: {
+    "accept" : '*/*',
+    "authorization": "Basic" + "Z2xvYmFsL2Nsb3VkQGFwaWV4YW1wbGVzLmNvbTpWTWxSby9laCtYZDhNfmw=",
+    },
     beforeSend: function(xhr) {
         xhr.setRequestHeader("Authorization", "Basic "+btoa(username+':'+password));
     },
@@ -91,33 +100,30 @@ $.ajax({
     error: function(err) {
         console.log(err)
     }
-}).done(function (JSON) {
-    let oldJSON = JSON.stringify(JSON);
+}).done(function (voucherJSON) {
+    let oldJSON = JSON.stringify(voucherJSON);
     let parsedJSON = JSON.parse(oldJSON);
-
-    console.log(parsedJSON.voucherId);
-
+    let ID = parsedJSON.voucherId;
+    let num = parsedJSON.serialNumber;
+    let issueDate = parsedJSON.issueDate;
+    let expiryDate = parsedJSON.expiryDate;
+    let client = clientId;
     
- let voucher = " "
- voucher += "<p> Voucher created! </p>";
- document.getElementById("voucher").innerHTML = voucher
+    var voucher ="<div class='col-md-12'> <div class='card' margin-top:'50px'> <div class='card-body'> <h4 class='card-header'>";
+    voucher += "<h4> Voucher created for: <b>"+clientName+"</b>! </h4>";
+    voucher += "<p> <b>Amount:</b> "+balance+" </p>";
+    voucher += "<p><b> ID:</b> "+ID+" </p>";
+    voucher += "<p> <b>Serial Number: </b>"+ num+" </p>";
+    voucher += "<p><b> Date Issued:</b> "+issueDate+" </p>";
+    voucher += "<p><b> Expires On :</b>"+expiryDate+" </p>";
+    voucher += "<p> <b>Client ID: </b>"+client+" </p>";
+    voucher += "</p></div></div>"
+    document.getElementById("voucherCard").innerHTML = voucher;
 
 
-// var xhr = new XMLHttpRequest();
-// xhr.open("POST", url);
-
-// xhr.setRequestHeader("accept", "*/*");
-// xhr.setRequestHeader("Content-Type", "application/json");
-// xhr.setRequestHeader("Authorization", "Basic "+btoa(username+':'+password));
-
-// xhr.onreadystatechange = function () {
-//    if (xhr.readyState === 4) {
-//       console.log(xhr.status);
-//       console.log(xhr.responseText);
-//    }};
-
-// xhr.send(data);
-
+}).fail(function(error){
+    var voucher = "<p> Whoops! Try again!</p>"
+    document.getElementById("voucherCard").innerHTML = voucher;
 })
 }
 
