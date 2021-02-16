@@ -26,10 +26,10 @@ I mean just look at it!
 ## Deploy code / give instructions on how to set up environments
 You should see the app deployed here: 
 
-Sending user input (which can contain unknown characters), POST is more robust and secure than GET.
 
 ##
-curl request was bogus
+curl request was bogus. 
+Sending user input (which can contain unknown characters), POST is more robust and secure than GET.
 
 ## A place to grow and improve the lives of others 
 Thank you very much for the opportunity to inteview and create this tech test! I hope it shows you what I am capable of and my passion for software engineering. I am happy to answer any questions about 
