@@ -3,14 +3,16 @@ from flask_basicauth import BasicAuth
 from requests.auth import HTTPBasicAuth
 import simplejson as json
 from flask import jsonify
+from flask_cors import CORS
 
 
 import requests
 
 app = Flask(__name__)
+CORS(app)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 

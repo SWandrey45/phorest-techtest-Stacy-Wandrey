@@ -37,20 +37,14 @@ option, input, select{
     height: 50%;
 }
 
-
-.card-title{
-    /* margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px; */
-} 
 button{
     display: block;
     margin-right: auto;
     margin-bottom: auto; 
     width: 200px;
 }
+
 .card-header, h4{
     background-color: lavender;
-    /* border-radius: 10px; */
-    back
+    
 }
