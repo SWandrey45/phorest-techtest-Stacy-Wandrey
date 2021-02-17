@@ -17,7 +17,9 @@ Why you made certain decisions over others, what did you take the time to learn?
 ## Automated tests
 ## Testing JavaScript 
 In order to set up tests, I had to do some research on the best way to handle testing my particular tech stack. As it stands I did not use a backend to connect to the API, so the application is made with two ajax called within two JavaScript functions.  so I started looking for the best way to handle the testing of my functions. There are several well known testing frameworks that go along with testing JavaScript like Mocha, Chai, Jasmine and Ava. 
-## Nice UI
+
+After reading through the benefits and non-benefits of each, I decided to go with Jasmine as the testing framework, 
+### Nice UI
 I stole the colours directly from the Phorest website so that the web app I made would be cohesive and on-brand with Phorest's image. 
 ## responsive for mobile 
 based on a bad expeirience so I wanted to implement this change 
@@ -27,10 +29,13 @@ I mean just look at it!
 You should see the app deployed here: 
 
 
-##Problems
+## Problems
 curl request was bogus. 
 Sending user input (which can contain unknown characters), POST is more robust and secure than GET.
-the dates needed to be put into a special format 
+the dates needed to be put into a special format.
 
-## A place to grow and improve the lives of others 
-Thank you very much for the opportunity to inteview and create this tech test! I hope it shows you what I am capable of and my passion for software engineering. I am happy to answer any questions about 
+I wanted to do something clever where when the voucher was created it would display the clients name and ID on it as well. However it would only return the last client that had been returned in the for look of the searchClient() function. 
+
+## A place to grow and improve the lives of others
+As my background experience suggests, I like people and I like helping others. I love that computer science gives me the tools to help others in a direct way, and hold the power of making the world a better place, even with small changes. 
+Thank you very much for the opportunity to inteview and create this tech test! I hope it shows you what I am capable of and my passion for software engineering. I am happy to answer any questions about my project and I hope you find that it meets your expectations! 
