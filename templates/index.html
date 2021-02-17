@@ -13,10 +13,10 @@
 
 <body style="background-color: #7a4ca9; font-family: Montserrat,sans-serif;">
     <img src="static/phorest-logo2.svg" class="center_img">
-    <h1 style="color: white;">Client Search</h1>
+    <h1 style="color: white;">Client Search & Voucher Generator</h1>
     <div id="main-card" class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
   <div class="card">
     <div class="card-body" style="font-family: sans-serif;">
         <h3 class="card-title">Search Criteria:</h3>
@@ -30,11 +30,17 @@
       <h3 class="card-title">Search for Clients:</h3>
     <input type="text" id="input" class="form-control input-lg" placeholder="Enter Name, Phone Number or Email" aria-label="Enter Name or Phone Number" aria-describedby="basic-addon2"/>
     <button type="submit" id="submit-btn"  onClick="clientSearch()" style="background-color:#ef9812; color:white;" class="btn-lg">Search</button>
-    <div style="color: white;">   .  </div>
 </div>
+
 </div>
     </div>
-    <div id="voucherCard"></div>
+    <div class='col-lg-6'> <div class='card'> <div class='card-body'>
+        <h3>Enter Voucher Amount Below: </h3>
+        <h4>Then click the 'Add Voucher' button on the client's card!</h4>
+        <input type='text' id='voucherInput' class='form-control input-lg' placeholder='Enter Voucher Amount'/>
+        <div id="voucherCard"></div>
+    </div></div></div>
+    
 
 </div>
 
