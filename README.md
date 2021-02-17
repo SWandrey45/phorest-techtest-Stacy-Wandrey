@@ -45,4 +45,4 @@ I wanted to do something clever where when the voucher was created it would disp
 As my background experience suggests, I like people and I like helping others. I love that computer science gives me the tools to help others in a direct way, and hold the power of making the world a better place, even with small changes. 
 Thank you very much for the opportunity to inteview and create this tech test! I hope it shows you what I am capable of and my passion for software engineering. I am happy to answer any questions about my project and I hope you find that it meets your expectations! 
 
-Working at Phorest would be more than just a job, I am looking for a place to 
+Working at Phorest would be more than just a job, I am looking for a place to thrive and I believe the graduate programme will help me to become the best I can be! :) 
