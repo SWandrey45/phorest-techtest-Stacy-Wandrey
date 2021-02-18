@@ -8,7 +8,7 @@ function clientSearch(){
 
     const username = 'global/cloud@apiexamples.com';
     const password = 'VMlRo/eh+Xd8M~l';
-    const url = 'http://api-gateway-dev.phorest.com/third-party-api-server/api/business/eTC3QY5W3p_HmGHezKfxJw/client?' + infoTypeChosen + '=' + clientInfo;
+    const url = 'https://api-gateway-dev.phorest.com/third-party-api-server/api/business/eTC3QY5W3p_HmGHezKfxJw/client?' + infoTypeChosen + '=' + clientInfo;
 
  // I made a connection with AJAX 
 $.ajax({ 
