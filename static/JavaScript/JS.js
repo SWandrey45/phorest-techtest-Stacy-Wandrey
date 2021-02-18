@@ -63,9 +63,11 @@ function generateVoucher(){
     var date = new Date; // Today's date 
 
     //based on today's date, get all the elements of it so that we can manipulate it for an expiration date! 
-    var year = date.getFullYear(); 
+    
     var month = date.getMonth();
     var day = date.getDate();
+    var year = date.getFullYear(); 
+  
 
     //make today's date readable by the API
     var todaysDate = date.toISOString();

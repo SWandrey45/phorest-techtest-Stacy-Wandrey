@@ -1,0 +1,23 @@
+{
+  "name": "phorest-techtest-stacy-wandrey",
+  "version": "1.0.0",
+  "description": "my project for the tech test",
+  "main": "index.js",
+  "dependencies": {
+    "jasmine": "^3.6.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SWandrey45/phorest-techtest-Stacy-Wandrey.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SWandrey45/phorest-techtest-Stacy-Wandrey/issues"
+  },
+  "homepage": "https://github.com/SWandrey45/phorest-techtest-Stacy-Wandrey#readme"
+}
