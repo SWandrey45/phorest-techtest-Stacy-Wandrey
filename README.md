@@ -26,7 +26,7 @@ I also wanted to make my application responsive for mobile environments. So, you
 I mean just look at it! I have commented explanations for functions and code blocks and practiced good spacing for tired eyes. 
 
 ## Deploy code 
-You should see the app deployed here: 
+You should see the app deployed here: https://swandrey45.github.io/phorest-techtest-Stacy-Wandrey/
 
 ## Problems
 The curl request that I coped from the Phorest API was missing a character in the BranchID. This means every time I tried to do a post request it would fail. After some quick debugging and going over the request VERY CAREFULLY, I noticed the missing w!  
