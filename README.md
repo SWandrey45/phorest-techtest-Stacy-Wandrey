@@ -24,10 +24,10 @@ The colours of my web app are taken directly from Phorest’s website so that th
 #### responsive for mobile 
 I also wanted to make my application responsive for mobile environments. So, you can adjust the browser and still be able to enjoy the functionality of the application at any screen size. I decided to do this based on a bad experience I had with an online booking that I made on my phone. The inputs were so tiny and the font was hard to read! I wanted to implement this change and hope it is seen in my scrolling design.  
 
-### Clean code
+## Clean code
 I mean just look at it! I have commented explanations for functions and code blocks and practiced good spacing for tired eyes. 
 
-### Deploy code 
+## Deploy code 
 You should see the app deployed here: 
 
 ## Problems
