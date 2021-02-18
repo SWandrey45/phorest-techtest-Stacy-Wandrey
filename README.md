@@ -9,7 +9,7 @@ To begin this project, I decided to first plan my initial ideas for the tech sta
 -CSS 
 -Jasmine (for testing) 
 
-## I started too complicated 
+## How it started 
 My initial gut instinct was that I needed to create a flask back-end to make calls to the API and Post the voucher requests back to the API. Therefore, I started by making a flask application! After several failed attempts of connecting to the API and then struggling to return it to the JavaScript front end side of the application, I decided there had to be a better way and looked into if JavaScript had a way of connecting to an API. So, I took the time to learn how to make an ajax request and then how to use basic authorisation with the request. Ajax was also great because it is a much simpler way of directly returning the json object to the JavaScript file, so it was easier to manipulate. I also realized I didn’t need to set up my own backend with flask at all. But it was the basis for my main view, so I kept it. 
 
 ## Automated tests
