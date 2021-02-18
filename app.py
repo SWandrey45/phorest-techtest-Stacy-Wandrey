@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-from flask_basicauth import BasicAuth
 from requests.auth import HTTPBasicAuth
 import simplejson as json
 from flask import jsonify
