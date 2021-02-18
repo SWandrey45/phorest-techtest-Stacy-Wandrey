@@ -99,7 +99,7 @@ $.ajax({
     contentType: 'application/json',
     headers: {
     "accept" : '*/*',
-    "authorization": "Basic" + "Z2xvYmFsL2Nsb3VkQGFwaWV4YW1wbGVzLmNvbTpWTWxSby9laCtYZDhNfmw=", //this authorization is from the curl found on the API website when the credentials are used to authorize the page 
+    "authorization": "Basic" + "Z2xvYmFsL2Nsb3VkQGFwaWV4YW1wbGVzLmNvbTogVk1sUm8vZWgrWGQ4TX5s", //this authorization is from the curl found on the API website when the credentials are used to authorize the page 
     },
     beforeSend: function(xhr) {
         xhr.setRequestHeader("Authorization", "Basic "+btoa(username+':'+password));
