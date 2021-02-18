@@ -1,4 +1,6 @@
 
+/* Basic styling created by Stacy with inspiration from Phorest's webpage */
+
 h1 {
     font-size: 100;
     text-align: center;
@@ -39,7 +41,6 @@ option, input, select{
 .card {
     background-color: white;
     border-radius: 10px;
-    /* margin-left: 25%; */
 }
 .card-body{
     padding-top: 5px;

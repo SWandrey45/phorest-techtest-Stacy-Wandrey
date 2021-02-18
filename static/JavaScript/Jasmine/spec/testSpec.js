@@ -1,33 +1,31 @@
-var xhr, requests;
+url = 'http://api-gateway-dev.phorest.com/third-party-api-server/api/business/eTC3QY5W3p_HmGHezKfxJw/client?'
 
-beforeEach(function () {  
-  xhr = sinon.useFakeXMLHttpRequest();
-  requests = [];
-
-  //when an ajax request is created it will be added to the requests array
-  //rather than actually being sent
-  xhr.onCreate = function (request) {
-    requests.push(request);
- };
+beforeEach(function() {
+  jasmine.Ajax.install();
+});
+afterEach(function() {
+  jasmine.Ajax.uninstall();
 });
 
-it("1.1 # Check xhr functionality", function () {
+it("Response", function() {
+  var doneFn = jasmine.createSpy("Successss");
 
-  var callback = sinon.spy();       
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function(args){
+    if(this.readyState == this.DONE){
+      doneFn(this.responseText);
+    }
+  };
+  xhr.open("GET", url)
+  xhr.send();
 
-  //the code that is actually executing the ajax request called here
-  $.ajax('/some/uri', { success: callback }); 
+  expect(jasmine.Ajax.requests.mostRecent().url).toBe(url);
+  expect(doneFn).not.toHaveBeenCalled();
 
-  //give the fake response to the request sent above
-  requests[0].respond(200, { "Content-Type": "application/json" }, '[{ "some": "testData" }]');
-
-  //assert some expectations
-  expect(requests.length).toBe(1);
-  expect(requests[0].url).toBe('/some/uri');
-  expect(callback.calledWith([{ some: "testData" }])).toBe(true);
-
-});
-
-afterEach(function () {
-  xhr.restore();
+  jasmine.Ajax.requests.mostRecent().response({
+    "status": 200,
+    "contentType": 'application/json',
+    "responseText": 'cool',
+  });
+  expect(doneFn).toHaveBeenCalledWith('cool');
 });

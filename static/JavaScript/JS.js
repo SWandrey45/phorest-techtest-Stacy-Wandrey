@@ -1,4 +1,7 @@
+// This first function searches the client API! 
+
 function clientSearch(){
+
     let clientInfo = document.getElementById("input").value;
     let infoType = document.getElementById("dropdownmenu");
     let infoTypeChosen = infoType.options[infoType.selectedIndex].value; 
@@ -6,7 +9,8 @@ function clientSearch(){
     const username = 'global/cloud@apiexamples.com';
     const password = 'VMlRo/eh+Xd8M~l';
     const url = 'http://api-gateway-dev.phorest.com/third-party-api-server/api/business/eTC3QY5W3p_HmGHezKfxJw/client?' + infoTypeChosen + '=' + clientInfo;
- 
+
+ // I made a connection with AJAX 
 $.ajax({ 
     url: url,
     async: true,
@@ -16,27 +20,33 @@ $.ajax({
     beforeSend: function(xhr) {
         xhr.setRequestHeader("Authorization", "Basic "+btoa(username+':'+password));
     },
-    success: function(json){
+    success: function(){
         console.log("Success!")
     },
     error: function(err) {
         console.log(err)
     }
-}).done(function (clientJSON) {
+}).done(function (clientJSON) { 
+    
+    //The Call retrieves the json response 
     let oldJSON = JSON.stringify(clientJSON);
     let parsedJSON = JSON.parse(oldJSON);
     let object = parsedJSON._embedded;
     let clients = object.clients;
 
-    let ok = " ";
+    let ok = " "; //if the response is ok,
 
+//I loop through it using a for loop! 
     for(let i = 0; i < clients.length; i++){
         clientName = clients[i].firstName + " " + clients[i].lastName;
         clientid = clients[i].clientId;
-
+        //Set a variable for truthy falsey reuse-y 
         let IsEqualToClientInfo = (clientInfo.toLowerCase() === clients[i].firstName.toLowerCase() || clientInfo.toLowerCase() === clients[i].lastName.toLowerCase() || clientInfo === clients[i].mobile || clientInfo === clients[i].email);
 
-        if(IsEqualToClientInfo){
+        //Please note how the toLowerCase makes the search input case insensitive!! 
+
+        if(IsEqualToClientInfo){ 
+        //if the above boolean is true, use the data to make a card, then display the card on the DOM
         ok += "<div class='col-md-6'> <div class='card' margin-top:'50px'> <div class='card-body'> <h4 class='card-header'>Client: "+ clients[i].firstName + " " + clients[i].lastName + "</h4><p class='card-text'>"    
         ok += "<p><b> Mobile:</b> " + clients[i].mobile + "</p>"; 
         ok += "<p> <b>Email:</b> " + clients[i].email + "</p>";
@@ -45,29 +55,29 @@ $.ajax({
         ok += "</p></div></div></div>"        
          }
         }
+
         document.getElementById("clientCard").innerHTML = ok;
 
-}).fail(function (error) {
+}).fail(function (error) { //Else, respond that the customer doesn't exist! This bit of code doesn't quite work, and doesnt return anything. sorry!!  
     let ok = "<h4>Sorry, that client doesn't exist! Search again! :) </h4>";
     document.getElementById("clientCard").innerHTML = ok;
     })
-
 };
+
+//Now we move on to generating the unique voucher for the clients! 
 function generateVoucher(){
     voucher = " ";
-
     const username = 'global/cloud@apiexamples.com';
     const password = 'VMlRo/eh+Xd8M~l';
-
     let balance = document.getElementById("voucherInput").value;
-    var date = new Date; // Today's date 
 
+
+    var date = new Date; // Today's date 
     //based on today's date, get all the elements of it so that we can manipulate it for an expiration date! 
-    
     var month = date.getMonth();
     var day = date.getDate();
     var year = date.getFullYear(); 
-  
+
 
     //make today's date readable by the API
     var todaysDate = date.toISOString();
@@ -76,12 +86,9 @@ function generateVoucher(){
     //convert that date to be readable by the API! 
     var sixMonth = calcMonth.toISOString();
 
-
-
+//Now we create the URL and the data that will be sent to the post request, using the clientID that was made global in the previous function, and the balance that the user inputs
 var url = "https://api-gateway-dev.phorest.com/third-party-api-server/api/business/eTC3QY5W3p_HmGHezKfxJw/voucher";
 var data = '{ \"clientId\": \"'+clientid+'\", \"creatingBranchId\": \"SE-J0emUgQnya14mOGdQSw\", \"expiryDate\": \"'+ sixMonth +'\", \"issueDate\": \"'+ todaysDate +'\", \"originalBalance\": '+ balance +'}';
-
-// curl -X POST "https://api-gateway-dev.phorest.com/third-party-api-server/api/business/eTC3QY5W3p_HmGHezKfxJw/voucher" -H "accept: */*" -H "authorization: Basic Z2xvYmFsL2Nsb3VkQGFwaWV4YW1wbGVzLmNvbTpWTWxSby9laCtYZDhNfmw=" -H "Content-Type: application/json" -d "{ \"clientId\": \"WwEaIb0m4bhJphVtm2VgIw\", \"creatingBranchId\": \"SE-J0emUgQnya14mOGdQSw\", \"expiryDate\": \"2021-02-16T18:20:05.126Z\", \"issueDate\": \"2021-02-16T18:20:05.126Z\", \"originalBalance\": 123.12, \"serialNumber\": 122343412356}"
 
 $.ajax({ 
     url: url,
@@ -92,7 +99,7 @@ $.ajax({
     contentType: 'application/json',
     headers: {
     "accept" : '*/*',
-    "authorization": "Basic" + "Z2xvYmFsL2Nsb3VkQGFwaWV4YW1wbGVzLmNvbTpWTWxSby9laCtYZDhNfmw=",
+    "authorization": "Basic" + "Z2xvYmFsL2Nsb3VkQGFwaWV4YW1wbGVzLmNvbTpWTWxSby9laCtYZDhNfmw=", //this authorization is from the curl found on the API website when the credentials are used to authorize the page 
     },
     beforeSend: function(xhr) {
         xhr.setRequestHeader("Authorization", "Basic "+btoa(username+':'+password));
@@ -103,7 +110,8 @@ $.ajax({
     error: function(err) {
         console.log(err)
     }
-}).done(function (voucherJSON) {
+}).done(function (voucherJSON) { //upon a successful post, I take the data from the json object for displaying in the voucher card 
+
     let oldJSON = JSON.stringify(voucherJSON);
     let pJSON = JSON.parse(oldJSON);
     let ID = pJSON.voucherId;
@@ -112,6 +120,7 @@ $.ajax({
     let expiryDate = pJSON.expiryDate;
     clientNumber = pJSON.clientId;
     
+    //the information from the json is then used here to build it with HTML: 
     var voucher =" <div class='card' margin-top:'50px'> <div class='card-body'> <h4 class='card-header'>";
     voucher += "<h4> Voucher created successfully! </h4>";
     voucher += "<p> <b>Amount:</b> €"+balance+" </p>";
@@ -123,12 +132,11 @@ $.ajax({
     document.getElementById("voucherCard").innerHTML = voucher;
 
 
-}).fail(function(error){
+}).fail(function(error){ //this fail works if the user enters anything besides money 
     var voucher = "<h4> Whoops! Try making your voucher again!</h4>"
     document.getElementById("voucherCard").innerHTML = voucher;
 })
 }
 
-
-
+//I heavily referenced this source for the ajax GET/POST requests: 
 // https://stackoverflow.com/questions/34860814/basic-authentication-using-javascript

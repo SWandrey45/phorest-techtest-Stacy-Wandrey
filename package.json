@@ -4,9 +4,12 @@
   "description": "my project for the tech test",
   "main": "index.js",
   "dependencies": {
-    "jasmine": "^3.6.4"
+    "jasmine": "^3.6.4",
+    "sinon": "^9.2.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jasmine-ajax": "^4.0.0"
+  },
   "scripts": {
     "test": "jasmine"
   },

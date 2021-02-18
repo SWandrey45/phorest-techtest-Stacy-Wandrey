@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+    <!-- Bootstrap imports and style things and jquery etc. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,51 +14,51 @@
     <script src="static/JavaScript/JS.js"></script>
 </head>
 
+
 <body style="background-color: #7a4ca9; font-family: Montserrat,sans-serif;">
+
     <img src="static/phorest-logo2.svg" class="center_img">
     <h1 style="color: white;">Client Search & Voucher Generator</h1>
     <div id="main-card" class="container">
-        <div class="row">
-            <div class="col-lg-6">
-  <div class="card">
+    <div class="row">
+    <div class="col-lg-6">
+    <div class="card">
+
+      <!-- Main card  -->
     <div class="card-body" style="font-family: sans-serif;">
-        <h3 class="card-title">Step 1: Search Criteria:</h3>
+        <h3 class="card-title">Step 1: Search Criteria</h3>
         <select class="form-control input-lg" style="font-family: sans-serif;" id="dropdownmenu" >
             <option value="firstName">First Name</option>
             <option value="lastName">Last Name</option>
             <option value="phone">Phone Number</option>
             <option value="email">Email</option>
         </select>
-      
-      <h3 class="card-title">Step 2: Search for Clients:</h3>
+      <h3 class="card-title">Step 2: Search for Clients</h3>
     <input type="text" id="input" class="form-control input-lg" placeholder="Enter Name, Phone Number or Email" aria-label="Enter Name or Phone Number" aria-describedby="basic-addon2"/>
     <button type="submit" id="submit-btn"  onClick="clientSearch()" style="background-color:#ef9812; color:white;" class="btn-lg">Search</button>
 </div>
-
 </div>
+
+<!-- Voucher Card -->
     </div>
     <div class='col-lg-6'> <div class='card'> <div class='card-body'>
-        <h3>Step 3: Enter Voucher Amount Below: </h3>
+        <h3>Step 3: Enter Voucher Amount Below </h3>
         <h4>Then click the 'Add Voucher' button on the client's card!</h4>
         <input type='text' id='voucherInput' class='form-control input-lg' placeholder='Enter Voucher Amount'/>
+        <p>Please be patient, it can take up to 30 seconds for your voucher to generate</p>
         <div id="voucherCard"></div>
     </div></div></div>
-    
-
 </div>
-
     </div>
 
+<!-- The Client Cards -->
 
 <div class="row">
 <div class="col-lg-12">
 <div class="card-body" id="clientCard">   
 <p class="card-text"></p>
 </div>
-
-
 </div>
 </div>
-
 </body>
 </html>
